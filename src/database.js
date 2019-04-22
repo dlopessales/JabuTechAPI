@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const server = 'localhost:27017'; // REPLACE WITH YOUR DB SERVER
-const database = 'jabutechdb';    // REPLACE WITH YOUR DB NAME
+const database = 'jabutechmongodb';    // REPLACE WITH YOUR DB NAME
 class Database {
   constructor() {
     this._connect()
