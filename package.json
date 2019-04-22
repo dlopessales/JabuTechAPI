@@ -1,0 +1,19 @@
+{
+  "name": "jabutech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.2",
+    "swagger-jsdoc": "^3.2.9",
+    "swagger-ui-express": "^4.0.2"
+  }
+}
