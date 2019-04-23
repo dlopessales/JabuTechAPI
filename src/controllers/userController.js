@@ -27,7 +27,7 @@ exports.put = (req, res, next) => {
 
 exports.delete = (req, res, next) => {
   const getId = req.params.id;
-  UserModel.deleteOne({ id: getId}) 
+  UserModel.deleteOne({ _id: getId}) 
     .then(doc => {
       res.status(200).send(doc);
     })
