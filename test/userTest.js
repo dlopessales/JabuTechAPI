@@ -16,8 +16,8 @@ describe('Users', () => {
            done();           
         });        
     });
-
     describe('/POST user', () => {
+
         it('it should POST a user', (done) => {
             let user = {
                 firstName: "Danilo",
@@ -33,6 +33,23 @@ describe('Users', () => {
                     done();
                 });
         })
+    })
+
+    describe('/GET ALL users', () => {
+
+        it('it should GET ALL users', (done) => {
+
+            chai.request(server)
+            .get('/users')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a("array");
+                res.body.should.have.property("email").eql("dlopessales@gmail.com");
+                done();
+            });
+
+        })
+
     })
 
 })
