@@ -8,6 +8,8 @@ const router = express.Router();
 
 // Api routes
 const userRoute = require('./routes/usersRoute');
+const eventRoute = require('./routes/eventsRoute');
+
 const swaggerRoute = require('./routes/swaggerRoute');
 
 app.use(express.json({
@@ -16,6 +18,8 @@ app.use(express.json({
 }));
 
 app.use('/users', userRoute);
+app.use('/events', eventRoute);
+
 app.use('/swagger.json', swaggerRoute);
 
 

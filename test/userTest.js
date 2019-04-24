@@ -7,22 +7,33 @@ chai.use(chaiHttp);
 
 let User = require('../src/model/user');
 
-let url = "http://localhost:3000/users"
+//let url = "http://localhost:3000/users"
 
-describe('Users', () => {
+describe('User', () => {
 
-    beforeEach((done) => {
+    before((done) => {
         User.remove({}, (err) => { 
            done();           
         });        
     });
+
     describe('/POST user', () => {
 
         it('it should POST a user', (done) => {
             let user = {
                 firstName: "Danilo",
                 lastName: "Sales",
-                email: "dlopessales@gmail.com"
+                email: "dlopessales@gmail.com",
+                birthDate: "02/07/1985",
+                phone: 5531992771370,
+                address: {
+                    street: "Rua Alagoas",
+                    number: 581,
+                    city: "BH",
+                    state: "MG",
+                    zipcode: "30130160",
+                    country: "Brasil"
+                }
             }
             chai.request(server)
                 .post('/users')
@@ -44,7 +55,6 @@ describe('Users', () => {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a("array");
-                res.body.should.have.property("email").eql("dlopessales@gmail.com");
                 done();
             });
 

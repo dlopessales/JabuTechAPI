@@ -1,23 +1,22 @@
-const UserModel = require('../model/user')
+const EventModel = require('../model/event')
 
 exports.post = (req, res, next) => {
 
-  user = new UserModel(
+  event = new EventModel(
       req.body
     )
-    
-    user.save().then(doc => {
+    event.save().then(doc => {
       res.status(201).send(doc);
     })
     .catch(err => {
       res.status(501).send(err);
     })
-    
+
 };
 exports.put = (req, res, next) => {
   const getId = req.params.id;
  
-  UserModel.findOneAndUpdate({_id: getId}, req.body,{upsert:false}, function (err, doc) {
+  EventModel.findOneAndUpdate({_id: getId}, req.body,{upsert:false}, function (err, doc) {
     if (err) 
       res.status(501).send(err);
     else
@@ -27,7 +26,7 @@ exports.put = (req, res, next) => {
 
 exports.delete = (req, res, next) => {
   const getId = req.params.id;
-  UserModel.deleteOne({ _id: getId}) 
+  EventModel.deleteOne({ _id: getId}) 
     .then(doc => {
       res.status(200).send(doc);
     })
@@ -38,19 +37,20 @@ exports.delete = (req, res, next) => {
 
 exports.get = (req, res, next) => {
     const getId = req.params.id;
-    UserModel.find({ _id: getId})
-      .populate("events")
+    EventModel.find({ _id: getId})
+      .populate("creator")
       .then(doc => {
         res.status(200).send(doc);
       })
       .catch(err => {
         res.status(501).send(err);
       })
-
+    
 };
 
+
 exports.getAll = (req, res, next) => {
-  UserModel.find() 
+  EventModel.find() 
     .then(doc => {
       res.status(200).send(doc);
     })
@@ -58,15 +58,4 @@ exports.getAll = (req, res, next) => {
       res.status(501).send(err);
     })
   
-};
-
-exports.getByEmail = (req, res, next) => {
-  const getEmail = req.params.email;
-  UserModel.find({ email: getEmail}) 
-    .then(doc => {
-      res.status(200).send(doc);
-    })
-    .catch(err => {
-      res.status(501).send(err);
-    })
 };

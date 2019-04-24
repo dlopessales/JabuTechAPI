@@ -1,7 +1,7 @@
-let mongoose = require('mongoose')
-const validator = require('validator')
+let mongoose = require('mongoose');
+const validator = require('validator');
 
-const user = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   email: {
@@ -12,7 +12,18 @@ const user = new mongoose.Schema({
     validate: (value) => {
       return validator.isEmail(value)
     }
-  }
-})
+  },
+  birthDate: Date,
+  phone: Number,
+  address: {
+    street: String,
+    number: String,
+    city: String,
+    state: String,
+    zipcode: String,
+    country: String
+  },
+  events : { type: mongoose.Schema.Types.ObjectId, ref: 'EventModel' }
+});
 
-module.exports = mongoose.model('UserModel', user)
+module.exports = mongoose.model('UserModel', UserSchema);
