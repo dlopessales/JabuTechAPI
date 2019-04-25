@@ -12,8 +12,11 @@ const EventSchema = new mongoose.Schema({
         zipcode: String,
         country: String
     },
-    active: Boolean,
-    creator : { type: mongoose.Schema.Types.ObjectId, ref: 'UserModel' }
+    active: {
+        type: Boolean,
+        default: false
+    },
+    admins : [{ type: mongoose.Schema.Types.ObjectId, ref: 'UserModel' }]
 });
 
 module.exports = mongoose.model('EventModel', EventSchema);

@@ -39,7 +39,6 @@ exports.delete = (req, res, next) => {
 exports.get = (req, res, next) => {
     const getId = req.params.id;
     UserModel.find({ _id: getId})
-      .populate("events")
       .then(doc => {
         res.status(200).send(doc);
       })

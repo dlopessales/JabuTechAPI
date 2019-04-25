@@ -22,8 +22,7 @@ const UserSchema = new mongoose.Schema({
     state: String,
     zipcode: String,
     country: String
-  },
-  events : { type: mongoose.Schema.Types.ObjectId, ref: 'EventModel' }
+  }
 });
 
 module.exports = mongoose.model('UserModel', UserSchema);

@@ -38,7 +38,7 @@ exports.delete = (req, res, next) => {
 exports.get = (req, res, next) => {
     const getId = req.params.id;
     EventModel.find({ _id: getId})
-      .populate("creator")
+      .populate("admins")
       .then(doc => {
         res.status(200).send(doc);
       })
