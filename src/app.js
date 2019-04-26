@@ -5,6 +5,8 @@ const swaggerUi = require('swagger-ui-express');
 const app = express();
 const router = express.Router();
 
+var cors = require('cors');
+app.use(cors());
 
 // Api routes
 const userRoute = require('./routes/usersRoute');
