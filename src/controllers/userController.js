@@ -1,9 +1,6 @@
 const UserModel = require('../model/user')
 
 exports.post = (req, res, next) => {
-
-  console.log("User POST");
-
   user = new UserModel(
       req.body
     )
@@ -52,9 +49,6 @@ exports.get = (req, res, next) => {
 };
 
 exports.getAll = (req, res, next) => {
-
-  console.log("User GET");
-
   UserModel.find() 
     .then(doc => {
       res.status(200).send(doc);
